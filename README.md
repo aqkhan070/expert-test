@@ -6,7 +6,7 @@
 The frontend was sending an `industry` field for lead submissions, but the backend `Lead` interface was missing this parameter. This caused TypeScript errors and ignored valuable user input.
 
 **Solution**  
-The `industry` property has been added as an optional field in the `Lead` interface:
+The `industry` property has been added in the `Lead` interface:
 
 ```ts
 interface Lead {
@@ -22,7 +22,7 @@ interface Lead {
 Lead data received from the frontend was not being persisted to the database, resulting in missing records.
 
 **Solution**  
-A new function was created to store incoming leads in the database, ensuring all data (including `industry`) is saved correctly.
+A new lines of code written to store incoming leads in the database, ensuring all data (including `industry`) is saved correctly.
 
 ```ts
 import { db } from '../lib/db';
