@@ -1,5 +1,45 @@
 # Welcome to your Lovable project
 
+### 1. Added `industry` Field to Lead Interface
+
+**Problem**  
+The frontend was sending an `industry` field for lead submissions, but the backend `Lead` interface was missing this parameter. This caused TypeScript errors and ignored valuable user input.
+
+**Solution**  
+The `industry` property has been added as an optional field in the `Lead` interface:
+
+```ts
+interface Lead {
+  name: string;
+  email: string;
+  industry: string;
+  submitted_at: string;
+}
+```
+### 2. 💾 Implemented Function to Save Lead Data
+
+**Problem**  
+Lead data received from the frontend was not being persisted to the database, resulting in missing records.
+
+**Solution**  
+A new function was created to store incoming leads in the database, ensuring all data (including `industry`) is saved correctly.
+
+```ts
+import { db } from '../lib/db';
+
+  const { data, error: dbError } = await supabase
+          .from('leads')
+          .insert([
+            {
+              name: formData.name,
+              email: formData.email,
+              industry: formData.industry,
+              submitted_at: new Date().toISOString(),
+            }
+          ])
+          .select();
+```
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/94b52f1d-10a5-4e88-9a9c-5c12cf45d83a
