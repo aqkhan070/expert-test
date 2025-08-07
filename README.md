@@ -16,7 +16,7 @@ interface Lead {
   submitted_at: string;
 }
 ```
-### 2. 💾 Implemented Function to Save Lead Data
+### 2. Implemented Function to Save Lead Data
 
 **Problem**  
 Lead data received from the frontend was not being persisted to the database, resulting in missing records.
